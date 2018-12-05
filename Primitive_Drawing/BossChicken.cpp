@@ -22,3 +22,8 @@ void BossChicken::update()
 void BossChicken::shoot()
 {
 }
+
+void BossChicken::cleanup()
+{
+
+}

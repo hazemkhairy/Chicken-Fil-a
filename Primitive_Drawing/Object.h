@@ -9,10 +9,12 @@
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
-
+using namespace glm;
 using namespace std;
 class Object
 {
+protected :
+
 	GLuint vertexArrayID;
 	GLuint vertexBufferID;
 	GLuint mvpMatrixID;
@@ -22,12 +24,13 @@ class Object
 	glm::mat4 ModelMatrix;
 	glm::mat4 MVP_M;
 	
-	Texture * texture;
 	
+	Texture * texture;
 	float x, y, z;
 	float speed;
 	vector <GLfloat> verts;
 
+	GLuint programID;
 
 public:
 	Object();

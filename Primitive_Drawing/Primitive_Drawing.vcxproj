@@ -14,7 +14,7 @@
     <ProjectGuid>{F9DEF291-DF67-4352-B3AF-CC425FA55D1F}</ProjectGuid>
     <RootNamespace>Primitive_Drawing</RootNamespace>
     <ProjectName>Chicken Fil-a</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,6 +71,7 @@
     <ClCompile Include="Chicken.cpp" />
     <ClCompile Include="Egg.cpp" />
     <ClCompile Include="FPCamera.cpp" />
+    <ClCompile Include="GraphicsHelper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NormalChicken.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -88,6 +89,7 @@
     <ClInclude Include="Chicken.h" />
     <ClInclude Include="Egg.h" />
     <ClInclude Include="FPCamera.h" />
+    <ClInclude Include="GraphicsHelper.h" />
     <ClInclude Include="NormalChicken.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Renderer.h" />
