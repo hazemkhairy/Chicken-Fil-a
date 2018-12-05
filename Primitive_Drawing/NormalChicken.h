@@ -5,7 +5,7 @@ class NormalChicken :
 {
 public:
 	NormalChicken();
-	NormalChicken(GLuint pID);
+	NormalChicken::NormalChicken(GLuint pID, GLfloat x, GLfloat y, GLfloat z);
 	~NormalChicken();
 	void init();
 	void draw();

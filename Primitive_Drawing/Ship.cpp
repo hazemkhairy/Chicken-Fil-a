@@ -19,26 +19,29 @@ void Ship::init()
 		-1.0f,-1.0f,0.0f,
 		+1.0f,-1.0f,0.0f,
 	};*/
+	//point 1
 	verts.push_back(0.0f);
 	verts.push_back(+1.0f);
 	verts.push_back(0.0f);
 	
+	// p2
 	verts.push_back(-1.0f);
 	verts.push_back(-1.0f);
 	verts.push_back(0.0f);
 	
+	//P3
 	verts.push_back(+1.0f);
 	verts.push_back(-1.0f);
 	verts.push_back(0.0f);
 	
+
 	glGenBuffers(1, &vertexBufferID);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
 
-	glBufferData(GL_ARRAY_BUFFER, verts.size()* sizeof(verts), &verts[0], GL_STATIC_DRAW);
 	ProjectionMatrix = mat4(1.0f);
 	ViewMatrix = mat4(1.0f);
 	ModelMatrix = mat4(1.0f);
-	MVP_M = ModelMatrix * ViewMatrix*ProjectionMatrix;
+	MVP_M = ModelMatrix * ViewMatrix * ProjectionMatrix;
 	mvpMatrixID = glGetUniformLocation(programID, "MVP");
 }
 
@@ -59,8 +62,10 @@ Ship::~Ship()
 
 void Ship::draw()
 {
+	glBufferData(GL_ARRAY_BUFFER, (this->verts.size() ) * sizeof(GLfloat), &verts[0], GL_STATIC_DRAW);
+	cout << &MVP_M << endl;
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 0, (void*) 0);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 0, (void*)0);
 	glUniformMatrix4fv(mvpMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);

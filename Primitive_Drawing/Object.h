@@ -28,11 +28,11 @@ protected :
 	Texture * texture;
 	float x, y, z;
 	float speed;
-	vector <GLfloat> verts;
 
 	GLuint programID;
 
 public:
+	vector <GLfloat> verts;
 	Object();
 	~Object();
 	virtual void draw()=0;

@@ -7,7 +7,8 @@
 class Renderer
 {
     GLuint programID;
-	Ship * hazem; NormalChicken * hazem2;
+	Ship * hazem;
+	NormalChicken * hazem2,*hazem3,*hazem4;
 public:
     Renderer();
     ~Renderer();

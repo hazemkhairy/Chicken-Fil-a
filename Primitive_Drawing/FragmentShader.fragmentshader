@@ -1,15 +1,21 @@
 #version 330 core
 
 
-// Ouput data
-out vec3 color;
+uniform sampler2D myTextureSampler; // dh elly hy2t3 elgoz2 mn elsora elknera (a5er goz2 m3mlo bind)
+
 
 // In data
+in vec2 TexCoord;
+
+// Ouput data
+out vec3 color;
+out vec4 outtex;  // shayla el goz2 elm2to3 mn el sora elkbera elly htzhar 3l screen
 
 void main()
 {
 
 	// we set the color of each fragment to red.
-	color = vec3(1,0,0);
+	// color = vec3(1,0,0);
+	outtex = texture(myTextureSampler, TexCoord);
 
 }
