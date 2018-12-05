@@ -18,3 +18,8 @@ void ShipBullet::draw()
 void ShipBullet::update()
 {
 }
+
+void ShipBullet::cleanup()
+{
+
+}

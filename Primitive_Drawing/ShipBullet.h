@@ -6,5 +6,6 @@ public:
 	~ShipBullet();
 	void draw();
 	void update();
+	void cleanup();
 };
 

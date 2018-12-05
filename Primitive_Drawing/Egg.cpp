@@ -18,3 +18,9 @@ void Egg::draw()
 void Egg::update()
 {
 }
+
+
+void Egg::cleanup()
+{
+
+}
