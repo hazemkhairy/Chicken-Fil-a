@@ -59,7 +59,7 @@ bool InitGraphics()
 	do{ // Loop
 
 		renderer->Draw();
-
+		renderer->Update();
 		// Swap buffers
 		glfwSwapBuffers(window); //Displaying our finished scene
 		glfwPollEvents(); //try to comment it

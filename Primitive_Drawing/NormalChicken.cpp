@@ -29,25 +29,8 @@ void NormalChicken::init()
 	+1.0f,-1.0f,0.0f,
 	};*/
 	GLfloat nx, ny;
-	/*//Point 1
-	verts.push_back(x);
-	verts.push_back(y);
-	verts.push_back(0.0f);
-	//Point 2
-	nx = x - 0.1f;
-	ny = y - 0.1f;
-	verts.push_back(nx);
-	verts.push_back(ny);
-	verts.push_back(z);
-	// point 3
-	nx = x + 0.1f;
-	ny = y + 0.1f;
-	verts.push_back(nx);
-	verts.push_back(ny);
-	verts.push_back(0.0f);*/
 	// texture
-	this->texture = new Texture("chicken.png", 0);
-	
+	this->texture = new Texture("chicken2.png", 0);
 	//p1
 	verts.push_back(x);
 	verts.push_back(y);
@@ -56,23 +39,23 @@ void NormalChicken::init()
 	verts.push_back(0.0f);
 	verts.push_back(1.0f);
 	// p2
-	verts.push_back(x + 0.3f);
+	verts.push_back(x + 0.2f);
 	verts.push_back(y);
-	verts.push_back(0.0f);
+	verts.push_back(z);
 	//uv 2
 	verts.push_back(1.0f);
 	verts.push_back(1.0f);
 	//p3
 	verts.push_back(x);
-	verts.push_back(y + 0.3f);
-	verts.push_back(0.0f);
+	verts.push_back(y + 0.2f);
+	verts.push_back(z);
 	// UV 3
 	verts.push_back(0.0f);
 	verts.push_back(0.0f);
 	//p4
-	verts.push_back(x + 0.3f);
-	verts.push_back(y + 0.3f);
-	verts.push_back(0.0f);
+	verts.push_back(x + 0.2f);
+	verts.push_back(y + 0.2f);
+	verts.push_back(z);
 	// UV 3
 	verts.push_back(1.0f);
 	verts.push_back(0.0f);
@@ -83,7 +66,6 @@ void NormalChicken::init()
 	ModelMatrix = glm::translate(0.0f, 0.0f, 0.0f);
 	MVP_M = ModelMatrix * ViewMatrix*ProjectionMatrix;
 	mvpMatrixID = glGetUniformLocation(this->programID, "MVP");
-
 }
 void NormalChicken::draw()
 {
@@ -97,8 +79,21 @@ void NormalChicken::draw()
 	glDrawArrays(GL_TRIANGLES, 1, 3);
 
 }
+bool flag = 0;
+int time = 0;
 void NormalChicken::update()
 {
+	if (flag == 0 && time == 50) {
+		MVP_M *= glm::translate(-0.005f, -0.01f, 0.0f);
+		//MVP_M *= glm::rotate(45.0f, vec3(0.0f, 1.0f, 0.0f));
+		flag = 1;
+	}
+	else if(flag == 1 && time == 100) {
+		MVP_M *= glm::translate(0.005f, 0.01f, 0.0f);
+		flag = 0;
+		time = 0;
+	}
+	time++;
 }
 
 void NormalChicken::shoot()
