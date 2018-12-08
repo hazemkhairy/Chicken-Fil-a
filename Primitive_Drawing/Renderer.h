@@ -4,6 +4,8 @@
 #include"NormalChicken.h"
 #include"BossChicken.h"
 #include "FPCamera.h"
+#include "Egg.h"
+#include "ShipBullet.h"
 #pragma once
 
 class Renderer
@@ -12,6 +14,8 @@ class Renderer
 	Ship * hazem;
 	BossChicken* boss;
 	NormalChicken * hazem2,*hazem3,*hazem4;
+	Egg * ehh;
+	ShipBullet*gun;
 	FPCamera camera;
 	
 public:
