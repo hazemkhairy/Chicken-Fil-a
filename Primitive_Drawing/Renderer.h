@@ -20,6 +20,7 @@ public:
     
     void Initialize();
     void Draw();
+	void HandleKeyboardInput(int key);
 	void Update();
     void Cleanup();
 };

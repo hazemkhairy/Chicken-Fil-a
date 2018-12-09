@@ -24,10 +24,10 @@ void Renderer::Initialize()
 	//glDepthFunc(GL_LESS); 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders( "VertexShader.vertexshader", "FragmentShader.fragmentshader" );
-	//hazem = new Ship(programID);
-	hazem2 = new NormalChicken(programID, 0.0f, 0.0f, 0.0f);
+	hazem = new Ship(programID,0.0f, -0.6f ,0.0f);
+	//hazem2 = new NormalChicken(programID, 0.0f, 0.0f, 0.0f);
 	//hazem3 = new NormalChicken(programID, 0.5f, 0.0f, 0.0f);
-	boss = new BossChicken(programID, -0.9f, 0.0f, 0.0f);
+	//boss = new BossChicken(programID, -0.9f, 0.0f, 0.0f);
 	// Use our shader
 	glUseProgram(programID);
 }
@@ -46,20 +46,24 @@ void Renderer::Draw()
 		glEnableVertexAttribArray(1);
 
 		glUseProgram(programID);
-		//hazem->draw();
+		hazem->draw();
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		hazem2->draw();
+		//hazem2->draw();
 		//hazem3->draw();
 		//hazem4->draw();
-		boss->draw();
+		//boss->draw();
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 
 }
+void Renderer::HandleKeyboardInput(int key)
+{
+	hazem->HandleKeyboardInput(key);
+}
 void Renderer::Update() 
 {
-	hazem2->update();
+	//hazem2->update();
 	//hazem3->update();
 	//hazem4->update();
 }
