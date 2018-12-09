@@ -23,8 +23,8 @@ void Renderer::Initialize()
 	//glEnable(GL_DEPTH_TEST);
 	//glDepthFunc(GL_LESS); 
 	// Create and compile our GLSL program from the shaders
-	//hazem = new Ship(programID);
 	GLuint programID = LoadShaders( "VertexShader.vertexshader", "FragmentShader.fragmentshader" );
+	//hazem = new Ship(programID);
 	//hazem2 = new NormalChicken(programID, 0.0f, 0.0f, 0.0f);
 	//glUseProgram(programID);
 	//programID = LoadShaders("VertexShader.vertexshader", "FragmentShader.fragmentshader");
@@ -34,9 +34,7 @@ void Renderer::Initialize()
 	//glDeleteProgram(programID);
 	//boss = new BossChicken(programID, -0.9f, 0.0f, 0.0f);
 	//ehh = new Egg(programID, -0.5f, -0.5f, 0.0f);
-	//glUseProgram(programID);
-	//GLuint programiD = LoadShaders("VertexShader - Copy.vertexshader", "FragmentShader - Copy.fragmentshader");
-	//gun = new ShipBullet(programiD, 0.5f, -0.5f, 0.0f);
+	gun = new ShipBullet(programID, -0.2f,-0.7f, 0.0f);
 	// Use our shader
 	//glUseProgram(programiD);
 	//glDeleteProgram(programiD);
@@ -52,18 +50,25 @@ void Renderer::Draw()
 		//gun->draw();
 		glEnable(GL_BLEND);
 		glEnableVertexAttribArray(1);
-		hazem->draw();
-		//hazem2->draw();
+
+		glUseProgram(programID);
 		//hazem->draw();
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//hazem2->draw();
+		//hazem3->draw();
 		//hazem4->draw();
 		//boss->draw();
-		//hazem3->draw();
 		//ehh->draw();
+		gun->draw();
 
-		glDisable(GL_BLEND);
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 
+}
+void Renderer::HandleKeyboardInput(int key)
+{
+	hazem->HandleKeyboardInput(key);
 }
 void Renderer::Update() 
 {
