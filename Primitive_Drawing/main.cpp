@@ -6,6 +6,13 @@
 
 bool InitGraphics();
 
+
+int KeyPressed = -1;
+
+
+void SpecialKeyPressed(GLFWwindow*, int, int, int, int);
+
+
 int main( void )
 {
 	InitGraphics();
@@ -53,6 +60,9 @@ bool InitGraphics()
 
 	//Start menu loop
 
+	
+
+	glfwSetKeyCallback(window, &SpecialKeyPressed);
 	// ******************** Initialize OpenGL ******************** //
 	renderer->Initialize();
 	
@@ -60,7 +70,14 @@ bool InitGraphics()
 
 		renderer->Draw();
 		renderer->Update();
+		if (KeyPressed != -1)
+		{
+			renderer ->HandleKeyboardInput(KeyPressed);
+			//KeyPressed = -1;
+		}
+		
 		// Swap buffers
+
 		glfwSwapBuffers(window); //Displaying our finished scene
 		glfwPollEvents(); //try to comment it
 
@@ -75,3 +92,15 @@ bool InitGraphics()
     return true;
 
 }
+
+void SpecialKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (action == GLFW_PRESS)
+	{
+		KeyPressed = key;
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		KeyPressed = -1;
+	}
+};
