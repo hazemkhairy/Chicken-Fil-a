@@ -33,7 +33,7 @@ void Egg::init()
 	verts.push_back(z);//2*/
 
 	// Set the background color to blue
-	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
+	//glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
 	/*float x = 50;
 	x = -0.50f;
 
@@ -98,7 +98,7 @@ void Egg::init()
 
 void Egg::draw()
 {
-	glBufferData(GL_ARRAY_BUFFER, verts.size() * sizeof(GLfloat), &verts[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, verts.size() * sizeof(vec3), &verts[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (char*)(3 * sizeof(float)));
 	texture->Bind();

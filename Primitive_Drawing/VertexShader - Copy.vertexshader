@@ -1,0 +1,15 @@
+#version 330 core
+
+layout(location = 3) in vec3 vertexPosition_modelspace; 
+//layout(location = 1) in vec3 vertex_color; 
+out vec3 theColor;
+
+// step 5
+uniform mat4 _MVP;
+
+void main(){
+
+    gl_Position = _MVP * vec4(vertexPosition_modelspace, 1.0);
+	//theColor = vertex_color;
+}
+

@@ -13,8 +13,8 @@ Renderer::~Renderer()
 
 void Renderer::Initialize()
 {
-	// Set the background color to white
-	glClearColor(1.0f, 0.9f, 1.0f, 1.0f);
+	// Set the background color
+	glClearColor(1.0f, 0.6f, 1.0f, 1.0f);
 	camera.GetViewMatrix() = glm::lookAt(
 			glm::vec3(2,5,7),
 			glm::vec3(0,0,0),
@@ -23,49 +23,52 @@ void Renderer::Initialize()
 	//glEnable(GL_DEPTH_TEST);
 	//glDepthFunc(GL_LESS); 
 	// Create and compile our GLSL program from the shaders
-	GLuint programID = LoadShaders( "VertexShader.vertexshader", "FragmentShader.fragmentshader" );
 	//hazem = new Ship(programID);
+	GLuint programID = LoadShaders( "VertexShader.vertexshader", "FragmentShader.fragmentshader" );
 	//hazem2 = new NormalChicken(programID, 0.0f, 0.0f, 0.0f);
+	//glUseProgram(programID);
+	//programID = LoadShaders("VertexShader.vertexshader", "FragmentShader.fragmentshader");
 	//hazem3 = new NormalChicken(programID, 0.5f, 0.0f, 0.0f);
+	hazem = new Ship(programID, 0, -0.6f, 0);
+	glUseProgram(programID);
+	//glDeleteProgram(programID);
 	//boss = new BossChicken(programID, -0.9f, 0.0f, 0.0f);
 	//ehh = new Egg(programID, -0.5f, -0.5f, 0.0f);
-	gun = new ShipBullet(programID, -0.2f,-0.7f, 0.0f);
+	//glUseProgram(programID);
+	//GLuint programiD = LoadShaders("VertexShader - Copy.vertexshader", "FragmentShader - Copy.fragmentshader");
+	//gun = new ShipBullet(programiD, 0.5f, -0.5f, 0.0f);
 	// Use our shader
-	glUseProgram(programID);
+	//glUseProgram(programiD);
+	//glDeleteProgram(programiD);
+
 }
 
 void Renderer::Draw()
 {
-	//cout << "the ship : ";
-	//for (int i = 0; i < hazem->verts.size(); i++)
-	//	cout << hazem->verts[i] << ' ';
-	//cout << "\nthe chicken : ";
-	//for (int i = 0; i < hazem2->verts.size(); i++)
-		//cout << hazem2->verts[i] << ' ';
 		// Clear the screen
 		glClear( GL_COLOR_BUFFER_BIT);
-		glEnableVertexAttribArray(0);
-		glEnableVertexAttribArray(1);
-
-		glUseProgram(programID);
-		//hazem->draw();
-		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnableVertexAttribArray(0);
+		//gun->draw();
+		glEnable(GL_BLEND);
+		glEnableVertexAttribArray(1);
+		hazem->draw();
 		//hazem2->draw();
-		//hazem3->draw();
+		//hazem->draw();
 		//hazem4->draw();
 		//boss->draw();
+		//hazem3->draw();
 		//ehh->draw();
-		gun->draw();
 
+		glDisable(GL_BLEND);
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 
 }
 void Renderer::Update() 
 {
-	//hazem2->update();
-	//hazem3->update();
+	hazem2->update();
+	hazem3->update();
 	//hazem4->update();
 }
 void Renderer::Cleanup()

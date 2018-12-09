@@ -49,7 +49,7 @@ Ship::Ship()
 {
 }
 
-Ship::Ship(float i , float j , float k , float h)
+Ship::Ship(GLuint i , float j , float k , float h)
 {
 	x = i, y = j , z=k;
 	health = h;
@@ -64,7 +64,8 @@ void Ship::draw()
 {
 	glBufferData(GL_ARRAY_BUFFER, (this->verts.size() ) * sizeof(GLfloat), &verts[0], GL_STATIC_DRAW);
 	cout << &MVP_M << endl;
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 0, (void*) 0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 3, (void*) 0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 2, (void*) (sizeof(GLfloat)*15) );
 
 	glUniformMatrix4fv(mvpMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 

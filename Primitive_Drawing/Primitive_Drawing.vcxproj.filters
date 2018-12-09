@@ -118,10 +118,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="VertexShader.vertexshader">
+      <Filter>shaders</Filter>
+    </None>
     <None Include="FragmentShader.fragmentshader">
       <Filter>shaders</Filter>
     </None>
-    <None Include="VertexShader.vertexshader">
+    <None Include="VertexShader - Copy.vertexshader">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="FragmentShader - Copy.fragmentshader">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

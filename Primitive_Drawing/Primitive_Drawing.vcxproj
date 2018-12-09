@@ -100,7 +100,9 @@
     <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FragmentShader - Copy.fragmentshader" />
     <None Include="FragmentShader.fragmentshader" />
+    <None Include="VertexShader - Copy.vertexshader" />
     <None Include="VertexShader.vertexshader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

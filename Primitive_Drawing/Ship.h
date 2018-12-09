@@ -5,7 +5,7 @@ public:
 	void init();
 	Ship();
 	Ship(GLuint);
-	Ship(float, float, float, float);
+	Ship(GLuint, float, float, float);
 	void draw();
 	void update();
 	void shoot();
