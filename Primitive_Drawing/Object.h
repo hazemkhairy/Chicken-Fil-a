@@ -5,7 +5,7 @@
 #include<GL\glfw3.h>
 #include<stdio.h>
 #include<vector>
-
+#include "GraphicsHelper.h"
 // Include GLM
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
@@ -24,7 +24,7 @@ protected :
 	glm::mat4 ModelMatrix;
 	glm::mat4 MVP_M;
 	
-	
+	GraphicsHelper * graphicsHelper;
 	Texture * texture;
 	float x, y, z;
 	float speed;

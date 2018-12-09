@@ -7,13 +7,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 using namespace glm;
-class GraphicsHelper
+static class GraphicsHelper
 {
 public:
 	GraphicsHelper();
-	mat4 getTranslate(float, float, float);
-	mat4 getScale(float, float, float);
-	mat4 getRotation(int , int , int ,float);
+	static mat4 getTranslate(float, float, float);
+	static mat4 getScale(float, float, float);
+	static mat4 getRotation(int , int , int ,float);
 	~GraphicsHelper();
 };
 

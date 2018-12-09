@@ -24,7 +24,7 @@ void Renderer::Initialize()
 	//glDepthFunc(GL_LESS); 
 	// Create and compile our GLSL program from the shaders
 	GLuint programID = LoadShaders( "VertexShader.vertexshader", "FragmentShader.fragmentshader" );
-	//hazem = new Ship(programID);
+	hazem = new Ship(programID,0.0f, -0.6f ,0.0f);
 	//hazem2 = new NormalChicken(programID, 0.0f, 0.0f, 0.0f);
 	//glUseProgram(programID);
 	//programID = LoadShaders("VertexShader.vertexshader", "FragmentShader.fragmentshader");
@@ -33,8 +33,6 @@ void Renderer::Initialize()
 	glUseProgram(programID);
 	//glDeleteProgram(programID);
 	//boss = new BossChicken(programID, -0.9f, 0.0f, 0.0f);
-	//ehh = new Egg(programID, -0.5f, -0.5f, 0.0f);
-	gun = new ShipBullet(programID, -0.2f,-0.7f, 0.0f);
 	// Use our shader
 	//glUseProgram(programiD);
 	//glDeleteProgram(programiD);
@@ -52,16 +50,13 @@ void Renderer::Draw()
 		glEnableVertexAttribArray(1);
 
 		glUseProgram(programID);
-		//hazem->draw();
+		hazem->draw();
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		//hazem2->draw();
 		//hazem3->draw();
 		//hazem4->draw();
 		//boss->draw();
-		//ehh->draw();
-		gun->draw();
-
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
 

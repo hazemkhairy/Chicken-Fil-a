@@ -4,6 +4,7 @@
 
 Object::Object()
 {
+	graphicsHelper = new GraphicsHelper();
 	//texture = new Texture("hazem.png",0);
 }
 
