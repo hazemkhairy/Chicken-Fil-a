@@ -3,16 +3,24 @@
 using namespace std;
 Renderer::Renderer()
 {
-    
+
 }
 
 Renderer::~Renderer()
 {
-    Cleanup();
+	Cleanup();
 }
 
 void Renderer::Initialize()
 {
+	// Set the background color to white
+	glClearColor(1.0f, 0.9f, 1.0f, 1.0f);
+	camera.GetViewMatrix() = glm::lookAt(
+		glm::vec3(2, 5, 7),
+		glm::vec3(0, 0, 0),
+		glm::vec3(0, 1, 0)
+	);
+	// Use our shader
 	/*// Projection matrix : 
 	camera->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 	// View matrix : 
@@ -108,11 +116,11 @@ void Renderer::HandleKeyboardInput(int key)
 
 	camera->UpdateViewMatrix();
 }
-void Renderer::Update() 
+void Renderer::Update()
 {
 	//normalChicken->update();
 }
 void Renderer::Cleanup()
 {
-    glDeleteProgram(programID);
+	glDeleteProgram(programID);
 }

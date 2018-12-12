@@ -6,16 +6,37 @@ uniform sampler2D myTextureSampler; // dh elly hy2t3 elgoz2 mn elsora elknera (a
 
 // In data
 in vec2 TexCoord;
-
+in vec3 pos;
+in vec3 normData;
 // Ouput data
 out vec3 color;
 out vec4 outtex;  // shayla el goz2 elm2to3 mn el sora elkbera elly htzhar 3l screen
 
+uniform vec3 LightPosition_worldspace;
+uniform vec3 EyePosition_worldspace;
+uniform vec3 ambientLight;
+
 void main()
 {
+	vec3 lightVector = normalize(LightPosition_worldspace - pos);
+	float brightness = dot(lightVector,normData);
+	vec3 diffuseLight = vec3(brightness,brightness,brightness);
+	diffuseLight = clamp(diffuseLight,0,1);
 
+	vec3 reflectedLightVector = reflect(-lightVector,normData);
+	vec3 eyeDirectionVector = normalize(EyePosition_worldspace - pos);
+	float specularity = dot(reflectedLightVector,eyeDirectionVector);
+	//float specularExponent = 50;
+	//specularity = pow(specularity,specularExponent);
+	vec3 specularLight = vec3(specularity,specularity,specularity);
+	specularLight = clamp(specularLight,0,1);
+
+	vec4 colors = texture(myTextureSampler, TexCoord);
+
+	outtex = vec4(ambientLight+diffuseLight+specularLight,1)*colors;
+	
+	//outtex = colors;
+	
 	// we set the color of each fragment to red.
-	// color = vec3(1,0,0);
-	outtex = texture(myTextureSampler, TexCoord);
-
+	// color = vec3(1,0,0);	
 }
