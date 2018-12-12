@@ -33,8 +33,9 @@ void main()
 
 	vec4 colors = texture(myTextureSampler, TexCoord);
 
-	outtex = vec4(ambientLight+diffuseLight+specularLight,1)*colors;
-	
+	// dh kan bta3 yara outtex = vec4(ambientLight+diffuseLight+specularLight,1)*colors;
+	// dh 3lshan nrg3 tany mn gher light 
+	outtex = texture(myTextureSampler, TexCoord);
 	//outtex = colors;
 	
 	// we set the color of each fragment to red.
