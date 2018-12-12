@@ -18,7 +18,6 @@ protected:
 	GLuint vertexArrayID;
 	GLuint vertexBufferID;
 	GLuint normalsBufferID;
-	GLuint mvpMatrixID;
 	GLuint mMatrixID;
 
 	GLuint AmbientLightID;
@@ -28,7 +27,7 @@ protected:
 
 	glm::vec3 ambientLight;
 	glm::vec3 lightPosition;
-
+	//GLuint mvpMatrixID;
 	glm::mat4 ProjectionMatrix;
 	glm::mat4 ViewMatrix;
 	glm::mat4 ModelMatrix;
@@ -46,7 +45,7 @@ public:
 	vector <GLfloat> normals;
 	Object();
 	~Object();
-	virtual void draw() = 0;
+	virtual void draw(GLuint mvpUniformMatrixID, glm::mat4 VP) = 0;
 	virtual void update() = 0;
 	virtual void cleanup() = 0;
 };

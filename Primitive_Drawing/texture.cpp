@@ -38,7 +38,6 @@ void Texture::Bind()
 }
 
 
-
 //GLuint Texture::loadBMP_custom(const char * imagepath)
 //{
 //	// Data read from the header of the BMP file

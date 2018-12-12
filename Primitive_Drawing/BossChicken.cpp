@@ -7,11 +7,11 @@ BossChicken::BossChicken()
 {
 }
 
-BossChicken::BossChicken(GLuint pID, GLfloat x, GLfloat y, GLfloat z)
+BossChicken::BossChicken(GLuint pId, GLfloat x, GLfloat y, GLfloat z)
 {
 	this->x = x, this->y = y, this->z = z;
+	this->programID = pId;
 	health = 1;
-	programID = pID;
 	//cout << "gy b " << pID << " w fya " << programID << endl;
 	init();
 }
@@ -54,24 +54,26 @@ void BossChicken::init()
 	// UV 3
 	verts.push_back(1.0f);
 	verts.push_back(0.0f);
+	//Shader ourShader("VertexShader.vertexshader", "FragmentShader.fragmentshader");
 	glGenBuffers(1, &vertexBufferID);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
 	ProjectionMatrix = mat4(1.0f);
 	ViewMatrix = mat4(1.0f);
 	ModelMatrix = glm::translate(0.0f, 0.0f, 0.0f);
 	MVP_M = ModelMatrix * ViewMatrix*ProjectionMatrix;
-	mvpMatrixID = glGetUniformLocation(this->programID, "MVP");
+	//ourShader.use();
+	//mvpMatrixID = glGetUniformLocation(this->programID, "MVP");
 
 }
 
 
-void BossChicken::draw()
+void BossChicken::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 {
 	glBufferData(GL_ARRAY_BUFFER, (this->verts.size()) * sizeof(vec3), &verts[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)12);
 
-	glUniformMatrix4fv(mvpMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
+	glUniformMatrix4fv(mvpUniformMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 	texture->Bind();
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDrawArrays(GL_TRIANGLES, 1, 3);

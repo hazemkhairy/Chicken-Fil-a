@@ -14,6 +14,7 @@ using namespace std;
 #include <gl\glew.h>
 
 #include "shader.hpp"
+#include "Shader.h"
 
 GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path){
 
@@ -109,3 +110,23 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
 }
 
 
+
+
+Shader::Shader(const GLchar * vertexPath, const GLchar * fragmentPath)
+{
+	pID = LoadShaders(vertexPath, fragmentPath);
+}
+
+Shader::Shader()
+{
+}
+
+void Shader::use()
+{
+	glUseProgram(pID);
+}
+
+
+Shader::~Shader()
+{
+}

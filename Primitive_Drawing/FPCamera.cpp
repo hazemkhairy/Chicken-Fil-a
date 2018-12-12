@@ -2,10 +2,9 @@
 
 FPCamera::FPCamera(void)
 {
-	this->Reset(0, 0, 0, 
-		0, 0, -1, 
+	this->Reset(0, 0, 3,
+		0, 0, -1,
 		0, 1, 0);
-
 	SetPerspectiveProjection(45.0f,4.0f/3.0f,0.1f,100.0f);
 }
 

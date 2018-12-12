@@ -33,7 +33,7 @@ void Egg::init()
 	verts.push_back(z);//2*/
 
 	// Set the background color to blue
-	glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
+	//glClearColor(0.0f, 0.0f, 0.4f, 1.0f);
 	/*float x = 50;
 	x = -0.50f;
 
@@ -109,7 +109,6 @@ void Egg::init()
 	ViewMatrix = mat4(1.0f);
 	ModelMatrix = glm::translate(0.5f, 0.0f, 0.0f);
 	MVP_M = ModelMatrix * ViewMatrix*ProjectionMatrix;
-	mvpMatrixID = glGetUniformLocation(programID, "MVP");
 	mMatrixID = glGetUniformLocation(programID, "M");
 
 	LightPositionID = glGetUniformLocation(programID, "LightPosition_worldspace");
@@ -121,26 +120,24 @@ void Egg::init()
 	EyePositionID = glGetUniformLocation(programID, "EyePosition_worldspace");
 }
 
-void Egg::draw()
+void Egg::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
 	glBufferData(GL_ARRAY_BUFFER, verts.size() * sizeof(GLfloat), &verts[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (char*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (char*)(3 * sizeof(GLfloat)));
 	texture->Bind();
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDrawArrays(GL_TRIANGLES, 1, 3);
-
 	glBindBuffer(GL_ARRAY_BUFFER, normalsBufferID);
 	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(GLfloat), &normals[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
-	glUniformMatrix4fv(mvpMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
+  glUniformMatrix4fv(mvpUniformMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 	glUniformMatrix4fv(mMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
 	glUniformMatrix4fv(EyePositionID, 1, GL_FALSE, &ViewMatrix[0][0]);
 	glUniform3fv(LightPositionID, 1, &lightPosition[0]);
 	glUniform3fv(AmbientLightID, 1, &ambientLight[0]);
-
 	//glDrawArrays(GL_TRIANGLE_FAN, 0, 200);
 }
 

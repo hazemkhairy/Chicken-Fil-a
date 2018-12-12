@@ -6,17 +6,21 @@
 #include "FPCamera.h"
 #include "Egg.h"
 #include "ShipBullet.h"
+#include "Shader.h"
+#include "Floor.h"
 #pragma once
 
 class Renderer
 {
     GLuint programID;
-	Ship * hazem;
+	GLuint mvpMatrixID;
+	Ship * ship;
 	BossChicken* boss;
-	NormalChicken * hazem2,*hazem3,*hazem4;
-	Egg * ehh;
-	ShipBullet*gun;
-	FPCamera camera;
+	NormalChicken * normalChicken;
+	Egg * egg;
+	ShipBullet* gun;
+	Floor* floor;
+	FPCamera* camera;
 	
 public:
     Renderer();
