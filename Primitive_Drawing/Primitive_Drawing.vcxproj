@@ -14,7 +14,7 @@
     <ProjectGuid>{F9DEF291-DF67-4352-B3AF-CC425FA55D1F}</ProjectGuid>
     <RootNamespace>Primitive_Drawing</RootNamespace>
     <ProjectName>Chicken Fil-a</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,6 +70,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Chicken.cpp" />
     <ClCompile Include="Egg.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="FPCamera.cpp" />
     <ClCompile Include="GraphicsHelper.cpp" />
     <ClCompile Include="main.cpp" />
@@ -88,11 +89,13 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Chicken.h" />
     <ClInclude Include="Egg.h" />
+    <ClInclude Include="Floor.h" />
     <ClInclude Include="FPCamera.h" />
     <ClInclude Include="GraphicsHelper.h" />
     <ClInclude Include="NormalChicken.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="shader.hpp" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="ShipBullet.h" />
@@ -100,9 +103,7 @@
     <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FragmentShader - Copy.fragmentshader" />
     <None Include="FragmentShader.fragmentshader" />
-    <None Include="VertexShader - Copy.vertexshader" />
     <None Include="VertexShader.vertexshader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

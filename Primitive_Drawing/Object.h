@@ -17,7 +17,7 @@ protected :
 
 	GLuint vertexArrayID;
 	GLuint vertexBufferID;
-	GLuint mvpMatrixID;
+	//GLuint mvpMatrixID;
 	
 	glm::mat4 ProjectionMatrix;
 	glm::mat4 ViewMatrix;
@@ -35,7 +35,7 @@ public:
 	vector <GLfloat> verts;
 	Object();
 	~Object();
-	virtual void draw()=0;
+	virtual void draw(GLuint mvpUniformMatrixID, glm::mat4 VP) = 0;
 	virtual void update() = 0;
 	virtual void cleanup() = 0;
 };

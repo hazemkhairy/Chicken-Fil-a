@@ -7,7 +7,7 @@ public:
 	~ShipBullet();
 
 	void init();
-	void draw();
+	void draw(GLuint mvpUniformMatrixID, glm::mat4 VP);
 	void update();
 	void cleanup();
 };

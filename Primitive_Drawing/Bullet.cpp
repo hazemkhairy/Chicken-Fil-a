@@ -6,7 +6,7 @@ Bullet::Bullet()
 {
 }
 
-void Bullet::draw()
+void Bullet::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 {
 }
 

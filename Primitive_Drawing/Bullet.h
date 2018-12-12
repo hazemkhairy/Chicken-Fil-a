@@ -4,7 +4,7 @@ class Bullet : public Object {
 
 public:
 	Bullet();
-	void draw() ;
+	void draw(GLuint mvpUniformMatrixID, glm::mat4 VP) ;
 	void update();
 	void cleanup();
 	~Bullet();

@@ -66,19 +66,19 @@ void ShipBullet::init()
 	ViewMatrix = mat4(1.0f);
 	ModelMatrix = glm::translate(0.0f, 0.0f, 0.0f);
 	MVP_M = ModelMatrix * ViewMatrix*ProjectionMatrix;
-	mvpMatrixID = glGetUniformLocation(programID, "_MVP");
+	//mvpMatrixID = glGetUniformLocation(programID, "MVP");
 }
 
-void ShipBullet::draw()
+void ShipBullet::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 {
 	glBufferData(GL_ARRAY_BUFFER, verts.size() * sizeof(GLfloat), &verts[0],  GL_STATIC_DRAW);
-	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 0, (void*)0);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 3, (void*)0);
 	//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (char*)(3 * sizeof(float)));
 	//texture->Bind();
 	glLineWidth(3);
 	glDrawArrays(GL_LINE_STRIP , 0, 8);
 	//glDrawArrays(GL_TRIANGLES, 1, 3);
-	glUniformMatrix4fv(mvpMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
+	glUniformMatrix4fv(mvpUniformMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 }
 
 void ShipBullet::update()

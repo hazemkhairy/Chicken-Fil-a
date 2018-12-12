@@ -11,7 +11,7 @@ public:
 	Texture *texture1;
 	Texture *texture2;
 	Texture *texture3;
-	void draw();
+	void draw(GLuint mvpUniformMatrixID, glm::mat4 VP);
 	void update();
 	void shoot();
 	void HandleKeyboardInput(int);

@@ -165,20 +165,20 @@ void Ship::init()
 	ViewMatrix = mat4(1.0f);
 	ModelMatrix = mat4(1.0f);
 	MVP_M = ModelMatrix * ViewMatrix * ProjectionMatrix;
-	mvpMatrixID = glGetUniformLocation(programID, "MVP");
+	//mvpMatrixID = glGetUniformLocation(programID, "MVP");
 }
 
 
 
 
-void Ship::draw()
+void Ship::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 {
 	MVP_M = ModelMatrix * ViewMatrix * ProjectionMatrix;
 	glBufferData(GL_ARRAY_BUFFER, (this->verts.size() ) * sizeof(GLfloat), &verts[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 0, (void*) 0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 0, (void*)(sizeof(GLfloat) * 15));
 
-	glUniformMatrix4fv(mvpMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
+	glUniformMatrix4fv(mvpUniformMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 
 	texture1->Bind();
 	glDrawArrays(GL_TRIANGLES, 0, 3);
