@@ -42,7 +42,7 @@ void NormalChicken::init()
 	// p2
 	verts.push_back(x + 0.2f);
 	verts.push_back(y);
-	verts.push_back(1.0f);
+	verts.push_back(z);
 	//uv 2
 	verts.push_back(1.0f);
 	verts.push_back(1.0f);
@@ -65,16 +65,13 @@ void NormalChicken::init()
 	ProjectionMatrix = mat4(1.0f);
 	ViewMatrix = mat4(1.0f);
 	ModelMatrix = glm::translate(0.0f, 0.0f, 0.0f);
-	//MVP_M = ModelMatrix * ViewMatrix*ProjectionMatrix;
-	//mvpMatrixID = glGetUniformLocation(programID, "MVP");
 }
 void NormalChicken::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 {
+	MVP_M = VP * ModelMatrix;
 	glBufferData(GL_ARRAY_BUFFER, ( this->verts.size()) * sizeof(GLfloat), &verts[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (void*)12);
-	MVP_M = VP * ModelMatrix;
-	//glUseProgram(programID);
 	glUniformMatrix4fv(mvpUniformMatrixID, 1, GL_FALSE, &MVP_M[0][0]);
 	texture->Bind();
 	glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -84,13 +81,16 @@ void NormalChicken::draw(GLuint mvpUniformMatrixID, glm::mat4 VP)
 
 void NormalChicken::update()
 {
-	if (flag == 0 && time == 50) {
-		MVP_M *= glm::translate(-0.005f, -0.01f, -1.0f);
+	if (flag == 0 && time == 50) 
+	{
+		printf("1 \n");
+		ModelMatrix *= glm::translate(-0.005f, -0.01f, -0.0f);
 		//MVP_M *= glm::rotate(45.0f, vec3(0.0f, 1.0f, 0.0f));
 		flag = 1;
 	}
-	else if(flag == 1 && time == 100) {
-		MVP_M *= glm::translate(0.005f, 0.01f, 1.0f);
+	else if(flag == 1 && time == 100) 
+	{
+		ModelMatrix *= glm::translate(0.005f, 0.01f, 0.0f);
 		flag = 0;
 		time = 0;
 	}

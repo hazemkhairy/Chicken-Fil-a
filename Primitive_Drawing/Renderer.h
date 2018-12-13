@@ -7,7 +7,7 @@
 #include "Egg.h"
 #include "ShipBullet.h"
 #include "Shader.h"
-#include "Floor.h"
+#include "mfloor.h"
 #pragma once
 
 class Renderer
@@ -19,7 +19,7 @@ class Renderer
 	NormalChicken * normalChicken;
 	Egg * egg;
 	ShipBullet* gun;
-	Floor* floor;
+	mfloor* floor;
 	FPCamera* camera;
 	
 public:
